@@ -1,16 +1,11 @@
 import { CsvFileReader } from './CsvFileReader';
+import { MatchResult } from './MatchResult';
 
 const reader = new CsvFileReader('football.csv');
 reader.read();
 
-// enum - enumeration
-// used to singnal to other engineers that this is a set
-// of very closely related values
-enum MatchResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
-}
+const dateOfFirstMatch = reader.data[0][0];
+console.log(dateOfFirstMatch);
 
 let manUnitedWins = 0;
 
