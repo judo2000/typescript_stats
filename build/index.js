@@ -1,13 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const CsvFileReader_1 = require("./CsvFileReader");
+const MatchReader_1 = require("./MatchReader");
+const CsfFileReader_1 = require("./CsfFileReader");
 const MatchResult_1 = require("./MatchResult");
-const reader = new CsvFileReader_1.CsvFileReader('football.csv');
-reader.read();
-const dateOfFirstMatch = reader.data[0][0];
-console.log(dateOfFirstMatch);
+// 1.  Create an object that satisfies the 'DataReader interface'
+const csvFileReader = new CsfFileReader_1.CsvFileReader('football.csv');
+// 2. Create an instance of MatchREader and pass in something satiffying
+// the 'DataReader' interface
+const matchReader = new MatchReader_1.MatchReader(csvFileReader);
+matchReader.load();
+// matchReader.matches
 let manUnitedWins = 0;
-for (let match of reader.data) {
+for (let match of matchReader.matches) {
     if (match[1] === 'Man United' && match[5] === MatchResult_1.MatchResult.HomeWin) {
         manUnitedWins++;
     }

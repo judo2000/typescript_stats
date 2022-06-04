@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CsvFileReader = void 0;
 const fs_1 = __importDefault(require("fs"));
-// T is a reference to a generice type or TypeOfData
 class CsvFileReader {
     constructor(filename) {
         this.filename = filename;
@@ -19,8 +18,7 @@ class CsvFileReader {
             .split('\n')
             .map((row) => {
             return row.split(',');
-        })
-            .map(this.mapRow);
+        });
     }
 }
 exports.CsvFileReader = CsvFileReader;
